@@ -1,6 +1,4 @@
-package com.springinaction.springidol.Poems;
-
-import com.springinaction.springidol.Poems.Poem;
+package com.springinaction.springidol.poems;
 
 public class Sonnet29 implements Poem {
     private static String[] LINES = {

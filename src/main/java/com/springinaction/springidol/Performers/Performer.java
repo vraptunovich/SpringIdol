@@ -1,6 +1,6 @@
-package com.springinaction.springidol.Performers;
+package com.springinaction.springidol.performers;
 
-import com.springinaction.springidol.Exceptions.PerformanceException;
+import com.springinaction.springidol.exceptions.PerformanceException;
 
 public interface Performer {
     void perform() throws PerformanceException;

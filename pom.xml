@@ -13,17 +13,43 @@
         <!-- Spring framework -->
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>4.1.2.RELEASE</version>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>3.0.5.RELEASE</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring</artifactId>
             <version>2.5.6</version>
         </dependency>
 
+<!--
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.7.3</version>
+        </dependency>
+-->
 
         <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <version>2.7</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
         </dependency>
 
+        <!--
+                <dependency>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                </dependency>
+        -->
     </dependencies>
 
 
@@ -54,6 +80,13 @@
                     </archive>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+
+            </plugin>
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

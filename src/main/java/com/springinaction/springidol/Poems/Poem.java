@@ -1,4 +1,4 @@
-package com.springinaction.springidol.Poems;
+package com.springinaction.springidol.poems;
 
 public interface Poem {
     void recite();

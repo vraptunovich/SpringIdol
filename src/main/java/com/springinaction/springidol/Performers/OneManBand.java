@@ -1,22 +1,26 @@
-package com.springinaction.springidol.Performers;
+package com.springinaction.springidol.performers;
 
-import com.springinaction.springidol.Exceptions.PerformanceException;
+import com.springinaction.springidol.exceptions.PerformanceException;
 import com.springinaction.springidol.instruments.Instrument;
 
-import java.util.Collection;
+import java.util.Map;
+
 
 public class OneManBand implements Performer {
+    private Map<String, Instrument> instruments;
+
     public OneManBand() {
     }
 
-
     public void perform() throws PerformanceException {
-        for (Instrument instrument : instruments) {
+        for (String key : instruments.keySet()) {
+            System.out.print(key + " : ");
+            Instrument instrument = instruments.get(key);
             instrument.play();
         }
     }
-    private Collection<Instrument> instruments;
-    public void setInstruments(Collection<Instrument> instruments) {
-        this.instruments = instruments; // Внедрение коллекции инструментов
-    }
+
+    public void setInstruments(Map<String, Instrument> instruments) {
+        this.instruments = instruments; // Внедрение инструментов в виде
+    } // отображения (Map)
 }

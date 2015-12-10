@@ -1,7 +1,7 @@
-package com.springinaction.springidol.Jugglers;
+package com.springinaction.springidol.jugglers;
 
-import com.springinaction.springidol.Exceptions.PerformanceException;
-import com.springinaction.springidol.Performers.Performer;
+import com.springinaction.springidol.exceptions.PerformanceException;
+import com.springinaction.springidol.performers.Performer;
 
 public class Juggler implements Performer {
     private int beanBags = 3;

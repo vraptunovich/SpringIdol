@@ -1,28 +1,35 @@
-package com.springinaction.springidol.Performers;
+package com.springinaction.springidol.performers;
 
 
-import com.springinaction.springidol.Exceptions.PerformanceException;
+import com.springinaction.springidol.exceptions.PerformanceException;
 import com.springinaction.springidol.instruments.Instrument;
 
-public class Instrumentalist implements Performer {
+ 
+public   class Instrumentalist implements Performer {
+    private String song;
+     private Instrument instrument;
+
     public Instrumentalist() {
     }
+
     public void perform() throws PerformanceException {
         System.out.print("Playing " + song + " : ");
         instrument.play();
     }
-    private String song;
+
+    public String getSong() {
+        return song;
+    }
+
     public void setSong(String song) { // Внедрение мелодии
         this.song = song;
 
     }
-    public String getSong() {
-        return song;
-    }
+
     public String screamSong() {
         return song;
     }
-    private Instrument instrument;
+
     public void setInstrument(Instrument instrument) { // Внедрение
         this.instrument = instrument; // инструмента
     }

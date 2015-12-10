@@ -1,4 +1,4 @@
-package com.springinaction.springidol.Exceptions;
+package com.springinaction.springidol.exceptions;
 
 
 public class PerformanceException extends Exception {
