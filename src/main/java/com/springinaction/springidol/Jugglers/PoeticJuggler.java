@@ -9,7 +9,7 @@ public class PoeticJuggler extends Juggler {
         super();
         this.poem = poem;
     }
-    public PoeticJuggler(int beanBags, Poem poem) { // Внедрение количества
+    public PoeticJuggler( int beanBags,  Poem poem) { // Внедрение количества
         super(beanBags); // мячиков и поэмы
         this.poem = poem;
     }

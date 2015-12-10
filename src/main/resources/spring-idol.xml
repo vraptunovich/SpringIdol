@@ -3,19 +3,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:annotation-config />
 
     <bean id="duke"
-          class="com.springinaction.springidol.jugglers.Juggler">
-        <constructor-arg value="15"/>
+          class="com.springinaction.springidol.jugglers.Juggler"
+          >
+
     </bean>
 
     <bean id="sonnet29" class="com.springinaction.springidol.poems.Sonnet29"/>
 
-    <bean id="poeticDuke" class="com.springinaction.springidol.jugglers.PoeticJuggler">
-        <constructor-arg value="15"/>
-        <constructor-arg ref="sonnet29"/>
+
+    <bean id="poeticDuke" class="com.springinaction.springidol.jugglers.PoeticJuggler" autowire="constructor">
+
     </bean>
 
     <bean id="theStage"
@@ -67,7 +71,6 @@
         <property name="state" value="456"></property>
     </bean>
 
-
     <bean id="baseSaxophonist"
           class="com.springinaction.springidol.performers.Instrumentalist"
           abstract="true">
@@ -77,7 +80,6 @@
     <bean id="kenny" parent="baseSaxophonist"/>
     <bean id="david" parent="baseSaxophonist"/>
     <bean id="vasya" parent="baseSaxophonist" p:song="Macarena"/>
-
 
     <bean id="basePerformer" abstract="true">
         <property name="song" value="Somewhere Over the Rainbow"/>
@@ -95,28 +97,71 @@
         <replaced-method name="getContents" replacer="tigerReplacer"/>
     </bean>
 
-
     <bean id="harry" class="com.springinaction.springidol.performers.Magician"
           p:magicWords="Bippity boppity boo"
           p:magicBox-ref="magicBox"/>
 
-
- <!--   <bean id="igor"
-          class="com.springinaction.springidol.performers.Instrumentalist">
-        <lookup-method name="getInstrument" bean="saxophone" />
-        <property name="song" value="Greensleeves" />
-    </bean>-->
+    <!--   <bean id="igor"
+             class="com.springinaction.springidol.performers.Instrumentalist">
+           <lookup-method name="getInstrument" bean="saxophone" />
+           <property name="song" value="Greensleeves" />
+       </bean>-->
 
     <bean id="pianist"
           class="com.springinaction.springidol.performers.Instrumentalist"
           abstract="true">
-        <property name="song" value="Chopsticks" />
+        <property name="song" value="Chopsticks"/>
         <property name="instrument">
-            <bean class="com.springinaction.springidol.instruments.Piano" />
+            <bean class="com.springinaction.springidol.instruments.Piano"/>
         </property>
     </bean>
 
+<!--
+    <bean id="contact"
+          class="com.springinaction.springidol.contact.Contact">
+        <property name="phoneNumber" value="888-555-1212"/>
+    </bean>
 
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="com.springinaction.springidol.contact.PhoneNumber">
+                    <bean id="phoneEditor"
+                          class="com.springinaction.springidol.contact.PhoneEditor">
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>-->
+
+
+<!--    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>jdbc.properties</value>
+                <value>security.properties</value>
+                <value>application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${database.url}" />
+        <property name="driverClassName"
+                  value="${database.driver}" />
+        <property name="username"
+                  value="${database.user}" />
+        <property name="password"
+                  value="${database.password}" />
+    </bean>-->
+
+    <bean id="kenny2"
+          class="com.springinaction.springidol.performers.Instrumentalist">
+        <property name="song" value="Jingle Bells" />
+        <property name="instrument" ref="saxophone" />
+    </bean>
 
 
 </beans>
