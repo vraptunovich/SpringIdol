@@ -1,6 +1,5 @@
 package com.springinaction.springidol;
 
-import com.springinaction.springidol.events.Course;
 import com.springinaction.springidol.exceptions.PerformanceException;
 import com.springinaction.springidol.performers.Performer;
 import org.springframework.context.ApplicationContext;
@@ -15,12 +14,12 @@ public class Main {
         //  LocalTime currentTime = new LocalTime();
         System.out.println("Hello from Maven!");
 
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-idol_2.xml.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-idol.xml");
 
 
 
 
-         Performer performer = (Performer) ctx.getBean("poeticDuke");
+         Performer performer = (Performer) ctx.getBean("asd");
          try {
             performer.perform();
         } catch (PerformanceException e) {

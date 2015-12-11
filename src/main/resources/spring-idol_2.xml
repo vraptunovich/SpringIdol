@@ -7,19 +7,21 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+    <!--
+
+    <context:component-scan
+            base-package="com.springinaction.springidol">
+    </context:component-scan>
+-->
     <context:annotation-config />
 
+<bean id="guitar" class="com.springinaction.springidol.instruments.Guitar"/>
+    <bean id="eddie_2" class="com.springinaction.springidol.performers.Instrumentalist" p:song="Opa2" p:instrument-ref="guitar"/>
 
-    <bean id="saxophone"
-          class="com.springinaction.springidol.instruments.Saxophone"/>
 
 
-    <bean id="baseSaxophonist"
-          class="com.springinaction.springidol.performers.Instrumentalist"
-          abstract="true">
-        <property name="instrument" ref="saxophone"/>
-        <property name="song" value="Jingle Bells"/>
-    </bean>
-    <bean id="kenny" parent="baseSaxophonist"/>
+
+
 
     </beans>
