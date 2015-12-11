@@ -13,21 +13,32 @@ public class Main {
 
         //  LocalTime currentTime = new LocalTime();
         System.out.println("Hello from Maven!");
-
+        try {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-idol.xml");
 
 
+        Performer performer = (Performer) ctx.getBean("kenny");
 
-
-         Performer performer = (Performer) ctx.getBean("asd");
-         try {
             performer.perform();
         } catch (PerformanceException e) {
             e.printStackTrace();
         }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+/*
+        AnnotationConfigApplicationContext ctx =
+                new AnnotationConfigApplicationContext();
+        ctx.register(SpringIdolConfig.class);
+        ctx.refresh();
+        Performer performer = (Performer) ctx.getBean("kenny");
+        try {
+            performer.perform();
+        } catch (PerformanceException e) {
+            e.printStackTrace();
+        }*/
 
-
-         //  City city=(City)ctx.getBean("city");
+        //  City city=(City)ctx.getBean("city");
         //  System.out.println(city.toString());
 
 

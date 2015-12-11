@@ -2,7 +2,6 @@ package com.springinaction.springidol.instruments;
 
 //@StringedInstrument
 
-import com.springinaction.springidol.instruments.Instrument;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -4,14 +4,16 @@ package com.springinaction.springidol.performers;
 import com.springinaction.springidol.exceptions.PerformanceException;
 import com.springinaction.springidol.instruments.Instrument;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
+//@Component("asd")
+public class Instrumentalist implements Performer {
+    private String song="Opa Opa";
+    //@StringedInstrument
+    //@Strummed
+    // @Named("guitar")
+   @Autowired
 
-public   class Instrumentalist implements Performer {
-    private String song;
-    @Qualifier("saxophone")
-    @Autowired(required=false)
-     private Instrument instrument;
+    private Instrument instrument;
 
     public Instrumentalist() {
     }
