@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Instrumentalist implements Performer {
     private String song="Opa Opa";
     //@StringedInstrument
-    //@Strummed
+    //@Strummedj
     // @Named("guitar")
    @Autowired
 
