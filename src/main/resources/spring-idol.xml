@@ -18,43 +18,62 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
-    <bean id="audience"
-          class="com.springinaction.springidol.audience.Audience"/>
-
+    <bean id="magician" class="com.springinaction.springidol.mindReaders.MagicianMindReader"/>
+    <bean id="volunteer" class="com.springinaction.springidol.mindReaders.Volunteer"/>
 
     <aop:config>
-        <aop:aspect ref="audience">
-            <aop:pointcut id="performance2" expression=
-                    "execution(* com.springinaction.springidol.performers.Performer.perform(..))"/>
-            <!-- Совет, выполняемый и до, и после -->
-            <aop:around
-                    pointcut-ref="performance2"
-                    method="watchPerformance" />
+        <aop:aspect ref="magician">
+            <aop:pointcut id="thinking" expression="execution(* com.springinaction.springidol.mindReaders.Thinker.thinkOfSomething(String))
+        and args(thoughts)"/>
+
+            <aop:before
+                    pointcut-ref="thinking"
+                    method="interceptThoughts"
+                    arg-names="thoughts"/>
+
         </aop:aspect>
     </aop:config>
 
-<!--
 
-    <aop:config>
-        <aop:aspect ref="audience">
+    <!--
 
-            <aop:pointcut id="performance" expression=
-                    "execution(* com.springinaction.springidol.performers.Performer.perform(..))"/>
+        <bean id="audience"
+              class="com.springinaction.springidol.audience.Audience"/>
 
 
-            <aop:before pointcut-ref="performance"
-                        method="takeSeats"/>
-            <aop:before pointcut-ref="performance"
-                        method="turnOffCellPhones"/>
-            <aop:after-returning pointcut-ref="performance"
-                                 method="applaud"/>
-            <aop:after-throwing pointcut-ref="performance"
-                                method="demandRefund"/>
-        </aop:aspect>
-    </aop:config>
+        <aop:config>
+            <aop:aspect ref="audience">
+                <aop:pointcut id="performance2" expression=
+                        "execution(* com.springinaction.springidol.performers.Performer.perform(..))"/>
+                &lt;!&ndash; Совет, выполняемый и до, и после &ndash;&gt;
+                <aop:around
+                        pointcut-ref="performance2"
+                        method="watchPerformance" />
+            </aop:aspect>
+        </aop:config>
+    -->
 
--->
+    <!--
+
+        <aop:config>
+            <aop:aspect ref="audience">
+
+                <aop:pointcut id="performance" expression=
+                        "execution(* com.springinaction.springidol.performers.Performer.perform(..))"/>
+
+
+                <aop:before pointcut-ref="performance"
+                            method="takeSeats"/>
+                <aop:before pointcut-ref="performance"
+                            method="turnOffCellPhones"/>
+                <aop:after-returning pointcut-ref="performance"
+                                     method="applaud"/>
+                <aop:after-throwing pointcut-ref="performance"
+                                    method="demandRefund"/>
+            </aop:aspect>
+        </aop:config>
+
+    -->
 
     <context:annotation-config/>
     <context:component-scan base-package="com.springinaction.springidol"/>
